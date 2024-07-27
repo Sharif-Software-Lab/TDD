@@ -32,6 +32,10 @@ public class Library {
             System.out.println("!! Book " + book.getTitle() + " not registered.");
             return false;
         }
+        if (!this.students.contains(student)) {
+            System.out.println("!! Student " + student.getName() + " not registered.");
+            return false;
+        }
         if (student.hasBook(book)) {
             System.out.println("!! Student already has the book.");
             return false;
@@ -58,6 +62,7 @@ public class Library {
         }
         if (student.hasBook(book)) {
             this.books.add(book);
+            student.removeBook(book);
             System.out.println(student.getName() + " returned " + book.getTitle() + ".");
             return true;
         }
@@ -75,8 +80,22 @@ public class Library {
      * @return             The list of students that match the search criteria. Returns null if search type is title or author.
      */
     public ArrayList<Student> searchStudents(SearchByType searchByType, ArrayList<Object> keys) {
-        // TODO complete function
-        return null;
+        ArrayList<Student> answer = new ArrayList<>();
+        for (Student student : this.students) {
+            for (Object key : keys) {
+                if (checkStudentField(student, key, searchByType)) {
+                    answer.add(student);
+                    break;
+                }
+            }
+        }
+        return answer;
+    }
+
+    public static boolean checkStudentField(Student student, Object fieldValue, SearchByType searchByType) {
+        if (searchByType == SearchByType.NAME) return student.getName().equals((String) fieldValue);
+        else if (searchByType == SearchByType.ID) return student.getId() == (Integer) fieldValue;
+        return false;
     }
 
     /**
@@ -88,8 +107,23 @@ public class Library {
      * @return             The list of books that match the search criteria. Returns null if search type is name.
      */
     public ArrayList<Book> searchBooks(SearchByType searchByType, ArrayList<Object> keys) {
-        // TODO complete function
-        return null;
+        ArrayList<Book> answer = new ArrayList<>();
+        for (Book book : this.books) {
+            for (Object key : keys) {
+                if (checkBookField(book, key, searchByType)) {
+                    answer.add(book);
+                    break;
+                }
+            }
+        }
+        return answer;
+    }
+
+    public static boolean checkBookField(Book book, Object fieldValue, SearchByType searchByType) {
+        if (searchByType == SearchByType.ID) return book.getId() == (Integer) fieldValue;
+        else if (searchByType == SearchByType.TITLE) return book.getTitle().equals((String) fieldValue);
+        else if (searchByType == SearchByType.AUTHOR) return book.getAuthor().equals((String) fieldValue);
+        return false;
     }
 
     /**
