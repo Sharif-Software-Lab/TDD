@@ -80,8 +80,22 @@ public class Library {
      * @return             The list of students that match the search criteria. Returns null if search type is title or author.
      */
     public ArrayList<Student> searchStudents(SearchByType searchByType, ArrayList<Object> keys) {
-        // TODO complete function
-        return null;
+        ArrayList<Student> answer = new ArrayList<>();
+        for (Student student : students) {
+            for (Object key : keys) {
+                if (checkStudentField(student, key, searchByType)) {
+                    answer.add(student);
+                    break;
+                }
+            }
+        }
+        return answer;
+    }
+
+    public static boolean checkStudentField(Student student, Object fieldValue, SearchByType searchByType) {
+        if (searchByType == SearchByType.NAME) return student.getName().equals((String) fieldValue);
+        else if (searchByType == SearchByType.ID) return student.getId() == (Integer) fieldValue;
+        return false;
     }
 
     /**
