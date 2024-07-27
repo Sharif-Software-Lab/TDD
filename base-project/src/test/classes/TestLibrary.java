@@ -25,7 +25,7 @@ public class TestLibrary {
 
         library.addStudent(student1);
         assertTrue(library.lendBook(book1, student1));
-        assertFalse(student1.hasBook(book1));
+        assertTrue(student1.hasBook(book1));
 
         assertFalse(library.lendBook(book1, student2));
 
