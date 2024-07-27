@@ -81,7 +81,7 @@ public class Library {
      */
     public ArrayList<Student> searchStudents(SearchByType searchByType, ArrayList<Object> keys) {
         ArrayList<Student> answer = new ArrayList<>();
-        for (Student student : students) {
+        for (Student student : this.students) {
             for (Object key : keys) {
                 if (checkStudentField(student, key, searchByType)) {
                     answer.add(student);
@@ -107,8 +107,23 @@ public class Library {
      * @return             The list of books that match the search criteria. Returns null if search type is name.
      */
     public ArrayList<Book> searchBooks(SearchByType searchByType, ArrayList<Object> keys) {
-        // TODO complete function
-        return null;
+        ArrayList<Book> answer = new ArrayList<>();
+        for (Book book : this.books) {
+            for (Object key : keys) {
+                if (checkBookField(book, key, searchByType)) {
+                    answer.add(book);
+                    break;
+                }
+            }
+        }
+        return answer;
+    }
+
+    public static boolean checkBookField(Book book, Object fieldValue, SearchByType searchByType) {
+        if (searchByType == SearchByType.ID) return book.getId() == (Integer) fieldValue;
+        else if (searchByType == SearchByType.TITLE) return book.getTitle().equals((String) fieldValue);
+        else if (searchByType == SearchByType.AUTHOR) return book.getAuthor().equals((String) fieldValue);
+        return false;
     }
 
     /**
