@@ -19,6 +19,8 @@ public class Student {
 
     public int getId() {return id;}
 
+    public ArrayList<Book> getBooks() {return books;}
+
     public boolean hasBook(Book book) {
         return this.books.contains(book);
     }
