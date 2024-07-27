@@ -116,6 +116,16 @@ public class Library {
                 }
             }
         }
+        for (Student student : this.students) {
+            for (Book book : student.getBooks()) {
+                for (Object key : keys) {
+                    if (checkBookField(book, key, searchByType)) {
+                        answer.add(book);
+                        break;
+                    }
+                }
+            }
+        }
         return answer;
     }
 
