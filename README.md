@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/0f8fc247-046e-40e6-a215-85e003059ed5)# TDD
+# TDD
 TDD experiment for Software Enginnering Lab Course @ SUT.
 
 اعضای تیم:
