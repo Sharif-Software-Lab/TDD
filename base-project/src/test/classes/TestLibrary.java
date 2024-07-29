@@ -167,4 +167,48 @@ public class TestLibrary {
         assertEquals(result.get(2), students.get(4));
         assertEquals(result.size(), 3);
     }
+
+    @Test
+    public void testReturn2() {
+        Student student = new Student("H A", 1);
+        Book book = new Book("Arnold", "Schw", 1);
+
+        Library library = new Library();
+        library.addStudent(student);
+
+        assertFalse(library.returnBook(book, student));
+        student.addBook(book);
+        assertTrue(library.returnBook(book, student));
+    }
+
+    @Test
+    public void testLend2(){
+        Student student = new Student("H A", 1);
+        Book book = new Book("Arnold", "Schw", 1);
+
+        Library library = new Library();
+        library.addStudent(student);
+        assertFalse(library.lendBook(book, student));
+
+        library.addBook(book);
+        assertTrue(library.lendBook(book, student));
+
+        library.addBook(book);
+        assertFalse(library.lendBook(book, student));
+    }
+
+    @Test
+    public void testStudentAndBookDisplayNames(){
+        Student student = new Student("H A", 1);
+        Library library = new Library();
+        library.addStudent(student);
+
+        library.displayStudents();
+        assertEquals(student.toString(), "H A|1");
+
+        Book book = new Book("Arnold", "Schw", 1);
+        library.addBook(book);
+
+        assertEquals(book.toString(), "Arnold by Schw");
+    }
 }
