@@ -55,6 +55,9 @@ TDD experiment for Software Enginnering Lab Course @ SUT.
 می‌بینیم که در بعضی قسمت‌ها مانند شکل زیر استفاده‌ای نشده است. سعی می‌کنیم تست‌هایی بسازیم که این قسمت‌ها را پوشش دهند.
 ![image](https://github.com/user-attachments/assets/763a88ed-de35-47cb-af38-c2262b58da16)
 
+۴. بعد از اضافه شدن تست‌ها عدد coverage به صورت زیر می‌باشد
+![image](https://github.com/user-attachments/assets/a7f8c706-ee2c-4295-a5a9-15a324a45d6b)
+</div>
 
 
 
